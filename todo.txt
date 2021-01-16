@@ -1,0 +1,34 @@
+1 NAV-BAR
+2 **General bootstrap maxx**
+1 landing page
+
+
+
+3 markdown supported desc
+
+2 mapbox API
+3 NLP swearword blocks
+2 wordart automatic ( optional )
+
+CONTENT
+
+
+
+
+
+/                       landing.ejs
+/register   GET POST    register.ejs
+/login      GET POST    login.ejs
+/logout     GET 
+
+/protest    GET         show.ejs (all)
+/protest/:id    GET     display.ejs  (ek hich)
+
+
+/protest/new    GET, POST   new_post.ejs 
+
+
+
+
+
+Title - Take a stand . org 

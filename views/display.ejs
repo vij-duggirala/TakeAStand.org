@@ -1,0 +1,50 @@
+<%- include('partials/header') %>
+
+
+    <%= post.name %>
+        <%= post.description %>
+
+
+            <div class="row">
+                <button class="btn btn-primary" onclick="reg(event);" id=<%=post.id %> >Register!
+                </button>
+                <div id="reg-<%=post.id %>">
+                    <%= post.numRegistered %>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %> >Like
+                </button>
+                <div id="likes-count-<%=post.id %>">
+                    <%= post.numLiked %>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %> >Dislike
+                </button>
+                <span id="dislikes-count-<%=post.id %>">
+                    <%= post.numDisliked %>
+                </span>
+            </div>
+
+
+
+            <% comments.forEach(function(comm){ %>
+                <div>
+                    <%= comm %>
+                </div>
+                <% }) %>
+
+
+                    <form action="/protest/<%=post.id%>/comm" method="POST">
+                        <input type="text" name="comment" placeholder="what are your views">
+                        <input type="submit" value="done">
+                    </form>
+
+                    <%- include('partials/footer') %>

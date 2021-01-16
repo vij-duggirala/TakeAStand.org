@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+
+
+
+    <%posts.forEach(function(post){ %>
+        <div class="card-body" style="padding: 8px;">
+            <h4 class="card-title">
+                <%= post.name %>
+            </h4>
+            <p>
+                <%=post.description%>
+            </p>
+            <a href="/protest/<%=post.id%>" class="btn btn-primary">Read More</a>
+
+        </div>
+        <%});%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <%- include('partials/footer') %>

@@ -1,0 +1,56 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    var updatePostStats = {
+        Like: function (postId) {
+
+            document.getElementById('likes-count-' + postId).textContent++;
+
+        },
+        Dislike: function (postId) {
+            document.getElementById('dislikes-count-' + postId).textContent++;
+        }
+    };
+
+    var toggleButtonText = {
+        Like: function (button) {
+            button.textContent = "Liked";
+            button.disabled = true;
+        },
+        Dislike: function (button) {
+            button.textContent = "Disliked";
+            button.disabled = true;
+        }
+    };
+
+    var actOnPost = function (event) {
+        var postId = event.target.id;
+        console.log(postId);
+        var action = event.target.textContent.trim();
+        console.log(action);
+        var x = document.querySelectorAll(".btn" + postId);
+        x[0].disabled = true;
+        x[1].disabled = true;
+        toggleButtonText[action](event.target);
+        updatePostStats[action](postId);
+        axios.post('/protest/' + postId + '/act/' + action);
+    };
+
+
+
+    var reg = function (event) {
+        var postId = event.target.id;
+        document.getElementById('reg-' + postId).textContent++;
+        event.target.textContent = "Registered!";
+        event.target.disabled = true;
+        axios.post('/protest/' + postId + '/reg/');
+    };
+
+
+
+</script>
+
+
+</body>
+
+</html>
