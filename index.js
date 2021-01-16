@@ -7,6 +7,7 @@ const passport = require('passport');
 var LocalStrategy = require("passport-local");
 var flash = require("connect-flash");
 app.use(flash());
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 const { check, validationResult } = require('express-validator');
 app.set('view engine', 'ejs')
