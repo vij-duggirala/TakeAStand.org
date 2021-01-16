@@ -1,0 +1,310 @@
+/* 
+1. At least 1 media Query
+2. CSS flexbox at least once.
+*/
+
+body {
+	margin: 0;
+}
+
+h1 {
+	font: sans-serif;
+	color: red;
+	font-size: 50px;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+section {
+	padding-bottom: 25px;
+}
+
+#main {
+	height: auto;
+	width: 100%;
+	margin: auto;
+}
+
+#header {
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+	margin:0;
+	background-color: rgba(255,255,255,255);
+	z-index: 2;
+}
+
+#nav-bar {
+	color: #36383f;
+}
+
+#nav-bar img {
+	height: 60px;
+	float:left;
+	margin-left: 5%;
+	padding: 10px 0 10px 0;
+}
+
+#nav-bar a {
+	color: #36383f;
+	text-decoration: none;
+	float: right;
+	margin-right: 6px;
+	padding: 34px 18px 10px 0;
+}
+
+label[for='email'] {
+	display: inline-block;
+	padding: 15px;
+	background-color: rgba(37, 37, 37, 0.29);
+	color: #fff;
+	font-size: 35px;
+	width: 50% !important;
+	z-index: 1;
+	border-bottom-left-radius: 24px;
+    border-top-right-radius: 24px;
+    margin-bottom: 15px;
+}
+
+#email {
+	border: none;
+	height: 40px;
+	width: 35%;
+	padding-left: 15px;
+	font-size: 15px;
+	margin-bottom: 8px;
+}
+
+#submit {
+	border:none;
+	border-top: 2px solid #4a4a4a;
+	background-color: #4a4a4a;
+	color: #fff;
+    height: 42px;
+    width: 150px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#submit:hover {
+	border-top: 2px solid #696767;
+	background-color: #696767;
+}
+
+@media only  screen and (max-width: 529) {
+	#submit {
+		width: 150px;
+	}
+}
+
+#img1, #img2, #img3 {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	height: 600px;
+
+	color: #fff;
+
+	/* Using CSS flexbox */
+	text-align: center;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+
+#img1 {
+	background-image: url('https://www.gannett-cdn.com/presto/2020/06/01/PNM5/e5c31a7a-da88-4df4-b797-6edf6b5b8010-Floyd_2.jpg');
+}
+
+#img2 {
+	background-image: url('https://www.ny1.com/content/dam/News/2020/06/02/img_3747_jpg')
+}
+
+#img3 {
+	background-image: url('https://media3.s-nbcnews.com/i/newscms/2020_23/3378141/200603-washington-protest-peaceful-ac-1002p_e6da6f34c4dc45b6fd313b37811a869b.jpg')
+}
+
+#img2 div, #img3 div {
+	background-color: rgba(255, 255, 255, 0.48);
+	color: #333;
+    padding: 0 31px;
+    border-radius: 25px;
+}
+
+
+
+.brands-rows div, .new-items div, .shopnow div, .videos div {
+	display: inline-block;
+	background-color: #666b7a;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.new-items div img {
+	display: inline-block;
+	max-width: 150px;
+}
+
+.shopnow div img {
+	height: 150px;
+}
+
+.new-items div, .shopnow div, .videos div {
+	color: #000;
+	background-color: #fff;
+	border-bottom: 5px solid gray;
+}
+
+@media only screen and (max-width:  822px) {
+	.brands-rows div {
+		width: 40%;
+	}
+}
+
+@media only screen and (max-width:  597px) {
+	.brands-rows div {
+		width: auto;
+	}
+}
+
+/* Hover images */
+#amazon-echo:hover {
+	border-bottom: 5px solid red;
+	opacity: 0.9;
+}
+#philips-hue:hover {
+	border-bottom: 5px solid orange;
+	opacity: 0.9;
+}
+#google-assist:hover {
+	border-bottom: 5px solid blue;
+	opacity: 0.9;
+}
+#nest-cam:hover {
+	border-bottom: 5px solid green;
+	opacity: 0.9;
+}
+
+/* Hover Guarantee Icons */
+#moneyback:hover {
+	border-bottom: 5px solid red;
+}
+#freeshipping:hover {
+	border-bottom: 5px solid green;
+}
+#highquality:hover {
+	border-bottom: 5px solid #fcc602;
+}
+
+/* Hover Videos */
+#what-is-sh:hover {
+	border-bottom: 5px solid orange;
+}
+#top-sh:hover {
+	border-bottom: 5px solid blue;
+}
+#build-sh:hover {
+	border-bottom: 5px solid red;
+}
+#sh-explained:hover {
+	border-bottom: 5px solid #a900ff;
+}
+
+/* Hover colors */
+#insteon:hover {
+	background-color: #248ec2;
+}
+#amazon:hover {
+	background-color: #f90;
+}
+#ring:hover {
+	background-color: #1998d5;
+}
+#lutron:hover {
+	background-color: #000000;
+}
+#google:hover {
+	background-color: #ea4335;
+}
+#nest:hover {
+	background-color: #6b7b84;
+}
+#philips:hover {
+	background-color: #f7af1a;
+}
+#august:hover {
+	background-color: #ff1a12;
+}
+#arlo:hover {
+	background-color: #08a64e;
+}
+#smartthings:hover {
+	background-color: #15bfff;
+}
+#leviton:hover {
+	background-color: #013474;
+}
+#ecobee:hover {
+	background-color: #5bbd76;
+}
+
+footer {
+	background-color: #36383f;
+	text-align: center;
+	color: #fff;
+	padding: 15px 0;
+	font-size: 18px;
+}
+
+footer a {
+	text-decoration: none;
+	color: #fff;
+}
+
+@media only screen and (max-width: 687px) {
+  header a {
+    display:none;
+  }
+  label[for='email'] {
+    font-size: 5vw;
+  }
+}
+
+#banner {
+    background-attachment: fixed;
+    background-color: #272833;
+    background-image: url("../images/ph.jpg");
+    background-position: center center;
+    background-size: cover;
+    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
+    min-height: 100vh;
+    position: relative;
+    text-align: center;
+    z-index: 21;
+}
+
+#first_page {
+    height: 100vh;
+    vertical-align: bottom;
+}
+
+#img1 img2 {
+    height: 60vh;
+}
+
+#empty1 {
+    height: 2.5vh;
+}
+
+#textat1 {
+    margin-top: 7vh;
+    text-align: center;
+    vertical-align: bottom;
+
+}
+
+p {
+    font-size: 30px;
+}
