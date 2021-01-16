@@ -61,9 +61,16 @@
                         <input type="submit" value="done">
                     </form>
                     <div id="mapid" style="height: 220px; width: 220px">00</div>
-                    <button onclick="act(event);" data-lat=<%=post.latitude %>
+                    <button id="map_view" onclick="act(event);" data-lat=<%=post.latitude %>
                         data-lon =
-                        <%=post.longitude %>>View on map
+                        <%=post.longitude %>>Refocus
                     </button>
 
+
+                    <script>
+                        let map_btn = document.getElementById("map_view");
+                        window.onload = function () {
+                            map_btn.click();
+                        }
+                    </script>
                     <%- include('partials/footer') %>

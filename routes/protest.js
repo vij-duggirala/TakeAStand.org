@@ -100,13 +100,23 @@ router.post('/:id/reg', isLoggedIn, (req, res) => {
 
 
 
-router.post('/:id/comm', isLoggedIn, (req, res) => {
+router.post('/:id/comm', isLoggedIn, async (req, res) => {
+
+    var polarity = 0;
+    let ikestf = await ikes.findOne({ postId: req.params.id, user: req.user.username });
+    if (ikestf) {
+        if (ikestf.like === true)
+            polarity = 1;
+        else
+            polarity = -1;
+    }
 
 
     var newComm = new Comments({
         comment: req.body.comment,
         postId: req.params.id,
-        author: req.user.username
+        author: req.user.username,
+        polarity: polarity
     })
     newComm.save();
 
@@ -127,15 +137,14 @@ router.get('/:id', isLoggedIn, async (req, res) => {
 
     let registeredtf = await registers.find({ postId: req.params.id, user: req.user.username });
     let interacted = false;
-    if (ikestf.length)
+    if (ikestf.length) {
         interacted = true;
 
+    }
     let registered = false;
     if (registeredtf.length)
         registered = true;
 
-    console.log(ikestf);
-    console.log(interacted)
     res.render('display', { post: posts, comments: comments, interacted: interacted, registered: registered });
 
 });

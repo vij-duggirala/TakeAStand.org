@@ -7,7 +7,7 @@ const CommentsSchema = new mongoose.Schema({
     comment: { type: String, required: true, unique: false },
     postId: { type: String, required: true, unique: false },
     author: { type: String, required: true, unique: false },
-    against: { type: Boolean, default: false, unique: false }
+    polarity: { type: Number, default: 0, unique: false }
 })
 
 
