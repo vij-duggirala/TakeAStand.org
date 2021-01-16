@@ -20,7 +20,13 @@
                                 <button class="btn btn-primary" onclick="reg(event);" id=<%=post.id %>
                                     <% if ( registered==true){ %>
                                         disabled
-                                        <% } %>
+            
+                <%= post.keywords %>
+                    <div class="row">
+                        <button class="btn btn-primary" onclick="reg(event);" id=<%=post.id %>
+                            <% if ( registered==true){ %>
+                                disabled
+                                <% } %>
 
                                             >Register!
                                 </button>
@@ -30,6 +36,19 @@
                             </div>
 
 
+
+                <div class="row">
+                    <button class="btn btn-primary" onclick="reg(event);" id=<%=post.id %>
+                        <% if ( registered==true){ %>
+                            disabled
+                            <% } %>
+
+                                >Register!
+                    </button>
+                    <div id="reg-<%=post.id %>">
+                        <%= post.numRegistered %>
+                    </div>
+                </div>
 
 
                             <div class="row">
@@ -59,6 +78,31 @@
                             </div>
 
 
+                <div class="row">
+                    <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %>
+                        <% if ( interacted==true){ %>
+                            disabled
+                            <% } %>
+
+                                >Like
+                    </button>
+                    <div id="likes-count-<%=post.id %>">
+                        <%= post.numLiked %>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %>
+                        <% if ( interacted==true){ %>
+                            disabled
+                            <% } %>
+                                >Dislike
+                    </button>
+                    <span id="dislikes-count-<%=post.id %>">
+                        <%= post.numDisliked %>
+                    </span>
+                </div>
 
                             <% comments.forEach(function(comm){ %>
                                 <div>
@@ -111,9 +155,33 @@
                                                     for (var i = 0; i < x.length; i++)
                                                         list.push([x[i], 10])
                                                 } console.log(list); WordCloud(document.getElementById('my_canvas'), {
-                                                    list: list, shuffle: false, shape: 'cardoid', rotateRatio: 0.7  , fontweight: "bold"
+                                                    list: list, shuffle: false, shape: 'cardoid', rotateRatio: 0.7, fontweight: "bold"
                                                 });
                                             </script>
 
+                        <% comments.forEach(function(comm){ %>
+                            <div>
+                                <%= comm %>
+                            </div>
+                            <% }) %>
+
+
+                                <form action="/protest/<%=post.id%>/comm" method="POST">
+                                    <input type="text" name="comment" placeholder="what are your views">
+                                    <input type="submit" value="done">
+                                </form>
+                                <div id="mapid" style="height: 220px; width: 220px">00</div>
+                                <button id="map_view" onclick="act(event);" data-lat=<%=post.latitude %>
+                                    data-lon =
+                                    <%=post.longitude %>>Refocus
+                                </button>
+
+
+                                <script>
+                                    let map_btn = document.getElementById("map_view");
+                                    window.onload = function () {
+                                        map_btn.click();
+                                    }
+                                </script>
     </div>
     <%- include('partials/footer') %>

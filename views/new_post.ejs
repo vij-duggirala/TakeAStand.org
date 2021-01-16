@@ -1,26 +1,23 @@
 <%- include('partials/header') %>
+    <div class="container">
+
+        <form action="/protest/new" method="POST">
 
 
-    <form action="/protest/new" method="POST">
+            <input type="text" name="name" placeholder="name">
+            <input type="text" name="organization" placeholder="organization">
+
+            <input type="date" name="date" placeholder="date">
+            <input type="time" name="time" placeholder="time">
+            <input type="text" name="location" placeholder="location">
+
+            <textarea name="description" placeholder="description ( markdown supported) "></textarea>
 
 
-        <input type="text" name="name" placeholder="name">
-        <input type="text" name="organization" placeholder="organization">
+            <textarea name="keywords" placeholder="keywords"> </textarea>
+            <input type="submit" value="Start">
 
-        <input type="date" name="date" placeholder="date">
-        <input type="time" name="time" placeholder="time">
-        <input type="text" name="location" placeholder="location">
-
-        <textarea name="description" placeholder="description ( markdown supported) "></textarea>
-
-
-        <textarea name="keywords" placeholder="keywords"> </textarea>
-        <input type="submit" value="Start">
-
-    </form>
-
-
-
+        </form>
 
 
 
@@ -36,4 +33,7 @@
 
 
 
+
+
+    </div>
     <%- include('partials/footer') %>
