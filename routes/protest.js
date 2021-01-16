@@ -56,7 +56,7 @@ router.post('/new', async (req, res) => {
         keywords: req.body.keywords
 
     });
-    newPost.save();
+    await newPost.save();
     res.redirect('/protest');
 
 })
