@@ -45,7 +45,7 @@ const PostsSchema = new mongoose.Schema({
     },
     latitude: { type: Number, default: 0 },
     longitude: { type: Number, default: 0 },
-
+    Images: { type: [String] }
 
 })
 

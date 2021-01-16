@@ -11,6 +11,9 @@ var Posts = require('../models/posts.js');
 var Comments = require('../models/comments.js');
 var Filter = require('bad-words'),
     filter = new Filter();
+
+var multer = require('multer')
+var upload = multer({ dest: 'public/uploads/' })
 var ikes = require('../models/ikes.js');
 var registers = require('../models/register.js')
 const fetch = require('node-fetch');
@@ -127,6 +130,15 @@ router.post('/:id/comm', isLoggedIn, async (req, res) => {
 })
 
 
+
+router.post('/:id/img', upload.single('image'), isLoggedIn, async (req, res) => {
+    console.log(req.file);
+    let foundPost = await Posts.findOne({ _id: req.params.id });
+
+    foundPost.Images.push(req.file.filename)
+    foundPost.save()
+    res.redirect('/protest/' + req.params.id);
+})
 
 
 
