@@ -33,7 +33,7 @@ const PostsSchema = new mongoose.Schema({
         default: 0
     },
     numLiked: {
-        type: Number,
+        type:Number,
         default: 0
     },
     numDisliked: {
@@ -44,7 +44,8 @@ const PostsSchema = new mongoose.Schema({
         type: String
     },
     latitude: { type: Number, default: 0 },
-    longitude: { type: Number, default: 0 }
+    longitude: { type: Number, default: 0 },
+   
 })
 
 PostsSchema.pre('validate', function (next) {

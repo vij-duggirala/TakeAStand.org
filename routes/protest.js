@@ -9,7 +9,12 @@ const passport = require('passport');
 var User = require('../models/users.js');
 var Posts = require('../models/posts.js');
 var Comments = require('../models/comments.js');
+
+var ikes = require('../models/ikes.js');
+var registers = require('../models/register.js')
 const fetch = require('node-fetch');
+
+
 
 module.exports = router
 
@@ -56,15 +61,24 @@ router.post('/:id/act/:action', isLoggedIn, (req, res, next) => {
     var action = req.params.action;
 
     const counter = 1
+    var like = true
     if (action == "Like")
         Posts.updateOne({ _id: req.params.id }, { $inc: { numLiked: counter } }, {}, (err, numberAffected) => {
             res.send('');
         });
-    else
+    else {
         Posts.updateOne({ _id: req.params.id }, { $inc: { numDisliked: counter } }, {}, (err, numberAffected) => {
             res.send('');
         });
+        like = false;
+    }
 
+    var newIke = new ikes({
+        postId: req.params.id,
+        user: req.user.username,
+        like: like
+    });
+    newIke.save();
 
 });
 
@@ -74,6 +88,13 @@ router.post('/:id/reg', isLoggedIn, (req, res) => {
     Posts.updateOne({ _id: req.params.id }, { $inc: { numRegistered: counter } }, {}, (err, numberAffected) => {
         res.send('');
     });
+
+    var newReg = new registers({
+        postId: req.params.id,
+        user: req.user.username,
+
+    });
+    newReg.save();
 });
 
 
@@ -102,7 +123,20 @@ router.get('/:id', isLoggedIn, async (req, res) => {
     let posts = await Posts.findById(req.params.id);
     let comments = await Comments.find({ postId: req.params.id });
 
-    res.render('display', { post: posts, comments: comments });
+    let ikestf = await ikes.find({ postId: req.params.id, user: req.user.username });
+
+    let registeredtf = await registers.find({ postId: req.params.id, user: req.user.username });
+    let interacted = false;
+    if (ikestf.length)
+        interacted = true;
+
+    let registered = false;
+    if (registeredtf.length)
+        registered = true;
+
+    console.log(ikestf);
+    console.log(interacted)
+    res.render('display', { post: posts, comments: comments, interacted: interacted, registered: registered });
 
 });
 

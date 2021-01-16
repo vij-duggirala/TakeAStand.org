@@ -6,7 +6,12 @@
 
 
             <div class="row">
-                <button class="btn btn-primary" onclick="reg(event);" id=<%=post.id %> >Register!
+                <button class="btn btn-primary" onclick="reg(event);" id=<%=post.id %>
+                    <% if ( registered==true){ %>
+                        disabled
+                        <% } %>
+
+                            >Register!
                 </button>
                 <div id="reg-<%=post.id %>">
                     <%= post.numRegistered %>
@@ -17,7 +22,12 @@
 
 
             <div class="row">
-                <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %> >Like
+                <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %>
+                    <% if ( interacted==true){ %>
+                        disabled
+                        <% } %>
+
+                            >Like
                 </button>
                 <div id="likes-count-<%=post.id %>">
                     <%= post.numLiked %>
@@ -26,7 +36,11 @@
 
 
             <div class="row">
-                <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %> >Dislike
+                <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %>
+                    <% if ( interacted==true){ %>
+                        disabled
+                        <% } %>
+                            >Dislike
                 </button>
                 <span id="dislikes-count-<%=post.id %>">
                     <%= post.numDisliked %>

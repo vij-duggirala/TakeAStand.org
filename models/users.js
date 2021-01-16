@@ -18,10 +18,7 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
     },
-    Registered: { type: [String] },
-    Likes: { type: [String] },
-    Dislikes: { type: [String] }
-
+    Registered: { type: [String] }
 })
 UserSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('userData', UserSchema, 'userData');
