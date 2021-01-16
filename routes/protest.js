@@ -9,7 +9,8 @@ const passport = require('passport');
 var User = require('../models/users.js');
 var Posts = require('../models/posts.js');
 var Comments = require('../models/comments.js');
-
+var Filter = require('bad-words'),
+    filter = new Filter();
 var ikes = require('../models/ikes.js');
 var registers = require('../models/register.js')
 const fetch = require('node-fetch');
@@ -50,6 +51,7 @@ router.post('/new', async (req, res) => {
         location: req.body.location,
         description: req.body.description,
         keywords: req.body.keywords
+
     });
     newPost.save();
     res.redirect('/protest');
@@ -111,9 +113,9 @@ router.post('/:id/comm', isLoggedIn, async (req, res) => {
             polarity = -1;
     }
 
-
+    var comment = filter.clean(req.body.comment);
     var newComm = new Comments({
-        comment: req.body.comment,
+        comment: comment,
         postId: req.params.id,
         author: req.user.username,
         polarity: polarity
@@ -158,7 +160,7 @@ router.get('/:id', isLoggedIn, async (req, res) => {
 
 
 router.get('/', isLoggedIn, (req, res) => {
-    Posts.find({}, function (err, allPosts) {
+    Posts.find({}).sort({ date: -1 }).exec(function (err, allPosts) {
         if (err) {
             req.flash("error", "something went wrong");
             res.redirect("/");
