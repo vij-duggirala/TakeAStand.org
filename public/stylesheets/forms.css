@@ -495,12 +495,16 @@ input {
   display: table;
 }
 
-.card-3 .card-heading {
+.card-3 .card-heading_reg {
   background: url("../images/bg-heading-03.jpg") top left/cover no-repeat;
   display: table-cell;
   width: 50%;
 }
-
+.card-3 .card-heading_log {
+  background: url("../images/bg-heading-04.jpeg") top left/cover no-repeat;
+  display: table-cell;
+  width: 50%;
+}
 .card-3 .card-body {
   padding: 57px 65px;
   padding-bottom: 65px;
@@ -511,7 +515,13 @@ input {
   .card-3 {
     display: block;
   }
-  .card-3 .card-heading {
+  .card-3 .card-heading_reg {
+    display: block;
+    width: 100%;
+    padding-top: 400px;
+    background-position: center center;
+  }
+  .card-3 .card-heading_log {
     display: block;
     width: 100%;
     padding-top: 400px;
