@@ -16,7 +16,6 @@ var protestRoutes = require('./routes/protest')
 var loginRoutes = require('./routes/login_stuff')
 
 
-
 mongoose.connect('mongodb://localhost/dange', {
     useNewUrlParser: true, useUnifiedTopology: true,
     useCreateIndex: true, useFindAndModify: false
@@ -51,7 +50,9 @@ app.use(function (req, res, next) {
 
 
 app.get('/', (req, res) => {
-    res.render('landing')
+    res.render('landing', {
+    //    utils: wordCloud
+    })
 })
 
 app.use('/protest', protestRoutes);
