@@ -9,7 +9,7 @@ const passport = require('passport');
 var User = require('../models/users.js');
 var Posts = require('../models/posts.js');
 var Comments = require('../models/comments.js');
-
+const fetch = require('node-fetch');
 
 module.exports = router
 
@@ -19,27 +19,42 @@ router.get('/new', isLoggedIn, (req, res) => {
 
 
 
-router.post('/new', (req, res) => {
+router.post('/new', async (req, res) => {
+
+    var string = req.body.location;
+    const api_url = "http://api.positionstack.com/v1/forward?access_key=728600e7340ec73ca78eb07fb4a65150&query=" + `'` + string + `'` + "&limit=5";
+    const fetch_response = await fetch(api_url);
+    const Json = await fetch_response.json();
+    console.log(Json)
+    var lat = 0;
+    var lon = 0;
+
+
+
+    lat = Json.data[0].latitude
+    lon = Json.data[0].longitude
+
     var newPost = new Posts({
         name: req.body.name,
         author: req.user.username,
         createdAt: Date.now(),
         organization: req.body.organization,
         date: req.body.date,
-        //  time : req.body.time ,
-        location: [req.body.loc1, req.body.loc2],
+        latitude: lat,
+        longitude: lon,
+        location: req.body.location,
         description: req.body.description,
         keywords: req.body.keywords
     });
     newPost.save();
     res.redirect('/protest');
+
 })
 
 router.post('/:id/act/:action', isLoggedIn, (req, res, next) => {
 
     var action = req.params.action;
 
-    console.log(action);
     const counter = 1
     if (action == "Like")
         Posts.updateOne({ _id: req.params.id }, { $inc: { numLiked: counter } }, {}, (err, numberAffected) => {
@@ -65,8 +80,7 @@ router.post('/:id/reg', isLoggedIn, (req, res) => {
 
 
 router.post('/:id/comm', isLoggedIn, (req, res) => {
-    console.log(req.params.id)
-    console.log(req.user.username)
+
 
     var newComm = new Comments({
         comment: req.body.comment,

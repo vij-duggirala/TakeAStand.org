@@ -10,7 +10,7 @@ app.use(flash());
 app.use(bodyParser.urlencoded({ extended: false }));
 const { check, validationResult } = require('express-validator');
 app.set('view engine', 'ejs')
-
+const fetch = require('node-fetch');
 var protestRoutes = require('./routes/protest')
 var loginRoutes = require('./routes/login_stuff')
 
@@ -44,6 +44,10 @@ app.use(function (req, res, next) {
     next();
 
 });
+
+
+
+
 
 app.get('/', (req, res) => {
     res.render('landing')

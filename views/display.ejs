@@ -2,7 +2,7 @@
 
 
     <%= post.name %>
-        <%= post.description %>
+        <%- post.sanitisedHTML %>
 
 
             <div class="row">
@@ -46,5 +46,10 @@
                         <input type="text" name="comment" placeholder="what are your views">
                         <input type="submit" value="done">
                     </form>
+                    <div id="mapid" style="height: 220px; width: 220px">00</div>
+                    <button onclick="act(event);" data-lat=<%=post.latitude %>
+                        data-lon =
+                        <%=post.longitude %>>View on map
+                    </button>
 
                     <%- include('partials/footer') %>

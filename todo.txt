@@ -1,16 +1,17 @@
-1 NAV-BAR
-2 **General bootstrap maxx**
-1 landing page
+ NAV-BAR
+ **General bootstrap maxx**
+ landing page
 
 
 
-3 markdown supported desc
 
-2 mapbox API
-3 NLP swearword blocks
-2 wordart automatic ( optional )
+ mapbox API 
+ NLP swearword blocks
+ wordart automatic ( optional )
 
 CONTENT
+
+search bar
 
 
 

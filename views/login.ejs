@@ -1,11 +1,14 @@
-<form action="/login" method="post">
-    <!-- user input-->
+<%- include('partials/header') %>
+    <form action="/login" method="post">
+        <!-- user input-->
 
-    Username:<br>
-    <input type="text" name="username" placeholder="Username" required><br><br>
+        Username:<br>
+        <input type="text" name="username" placeholder="Username" required><br><br>
 
-    Password:<br>
-    <input type="password" name="password" placeholder="Password" required><br><br>
-    <!-- submit button -->
-    <input type="submit" value="login">
-</form>
+        Password:<br>
+        <input type="password" name="password" placeholder="Password" required><br><br>
+        <!-- submit button -->
+        <input type="submit" value="login">
+    </form>
+
+    <%- include('partials/footer') %>
