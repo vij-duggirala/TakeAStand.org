@@ -1,5 +1,17 @@
 <%- include('partials/header') %>
 
+    <script type="text/javascript" src="/javascripts/wordcloud.js"></script>
+
+    <canvas class="pic" id='my_canvas'>
+
+    </canvas>
+
+
+    <script>
+        var list = [['foo', 25], ['bar', 25], ['foo', 25], ['foo', 25], ['foo', 25], ['foo', 25], ['bar',22]];
+        WordCloud(document.getElementById('my_canvas'), { list: list } );
+    </script>
+
 
     <%= post.name %>
         <%- post.sanitisedHTML %>
