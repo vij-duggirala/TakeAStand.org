@@ -35,21 +35,21 @@
 
 
                             <div class="row">
-                                <button class="btn<%= post.id%>" onclick="actOnPost(event);" id=<%=post.id %>
+                                <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %>
                                     <% if ( interacted==true){ %>
                                         disabled
                                         <% } %>
 
                                             >Like
                                 </button>
-                                <div id="likes-count-<%= post.id%>">
+                                <div id="likes-count-<%=post.id %>">
                                     <%= post.numLiked %>
                                 </div>
                             </div>
 
 
                             <div class="row">
-                                <button class="btn<%= post.id%>" onclick="actOnPost(event);" id=<%=post.id %>
+                                <button class="btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %>
                                     <% if ( interacted==true){ %>
                                         disabled
                                         <% } %>

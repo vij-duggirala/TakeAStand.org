@@ -1,9 +1,11 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/show.scss">
 <%- include('partials/header') %>
     <div class="container">
         <%posts.forEach(function(post){ %>
-            <div class="row mx-auto justify-content-center" style="padding-bottom: 5%;">
+            <!-- <div class="row mx-auto justify-content-center" style="padding-bottom: 5%;">
                 <div class=" card text-center " style="width:48rem;">
                     <div class="card-body" style="padding: 8px;">
+                        <%= post %>
                         <h4 class="card-header bg-info">
                             <%= post.name %>
                         </h4>
@@ -19,23 +21,87 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
+
+
+            <script>
+                function func(f) {
+                    var str = 'http://localhost:4000/protest/'+f;
+
+                    var el = document.createElement('textarea');
+                    // Set value (string to be copied)
+                    el.value = str;
+                    // Set non-editable to avoid focus and move outside of view
+                    el.setAttribute('readonly', '');
+                    el.style = {position: 'absolute', left: '-9999px'};
+                    document.body.appendChild(el);
+                    // Select text inside element
+                    el.select();
+                    // Copy text to clipboard
+                    document.execCommand('copy');
+                    // Remove temporary element
+                    document.body.removeChild(el);
+
+                    console.log(str);
+                }
+            </script>
+
+            <main>
+                <section>
+                  
+                <div class="card" style="border-radius: 8px; background-color: #cecee9;">
+                    
+                    <div class="post_top">
+                        <img id="prof_pic" src="https://instagram.fdel21-1.fna.fbcdn.net/v/t51.2885-19/s150x150/122810134_412544013470643_2621482479962849799_n.jpg?_nc_ht=instagram.fdel21-1.fna.fbcdn.net&_nc_ohc=KDbXj29mrsMAX8lvRp7&tp=1&oh=d30903a5782fcc038214bc09bf0cc77b&oe=602E71D3"/>
+                        
+                        <p id="card-title" style="margin-left: 6px; font-size: 18px;">
+                            
+                            <%= post.author %>
+                            
+                        </p>
+
+                    </div>
+                
+                    <img class="card-image" src="https://images.unsplash.com/photo-1547744037-b80bdba1b6f0" />
+                    <div class="card-body">
+                      
+
+                        
+                        <p class="card-content">
+                            Name: <%= post.name %>
+                        </p>
+
+                        <p class="card-content">
+                            Date: <%= post.date.toDateString() %>
+                        </p>
+    
+                        <p class="card-content">
+                            Location: <%= post.location %>
+                        </p>
+
+                      <p class="card-content">
+                        
+                        <%=post.keywords%>
+
+                        </p>
+
+                        <div style="text-align: center;">
+                            <a href="/protest/<%=post.id%>" class="btn btn-dark" style="margin-top: 12px; margin-right: 40px; width: 180px;">Read More</a>
+                            <button onclick="func('<%=post.id%>')" class="btn btn-dark" style="margin-top: 12px; margin-left: 40px; width: 180px;">Share</a>
+                        </div>
+
+                        <div style="text-align: center;">
+                        </div>
+                    </div>
+                  </div>
+
+                  
+
+                </section>
+              </main>
+
             <%});%>
-
-
 
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <%- include('partials/footer') %>
+<%- include('partials/footer') %>
