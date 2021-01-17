@@ -54,7 +54,7 @@ router.post('/new', async (req, res) => {
         location: req.body.location,
         description: req.body.description,
         keywords: req.body.keywords,
-        URL: req.user.ImageURL,
+        URL: req.user.imageURL,
     });
     await newPost.save();
     res.redirect('/protest');
