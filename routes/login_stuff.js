@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 
+var multer = require('multer')
+var upload = multer({ dest: 'public/uploads/' })
+
 var User = require('../models/users.js');
 
 module.exports = router
@@ -25,11 +28,16 @@ router.get("/register", function (req, res) {
 });
 
 
-router.post('/register', (req, res) => {
+router.post('/register', upload.single('image'), (req, res) => {
+    var imageURL = "https://bgp-palembang.com/assets/default-user.png";
+    console.log(req.file);
+    if (req.file)
+        imageURL = req.file.filename
     var newUser = new User({
         username: req.body.username,
         name: req.body.name,
         email: req.body.email,
+        imageURL: imageURL
     });
     User.register(newUser, req.body.password, function (err, user) {
         if (err) {
@@ -38,12 +46,16 @@ router.post('/register', (req, res) => {
             req.flash("error", "error , please try again");
         }
         passport.authenticate("local")(req, res, function () {
-
             req.flash("success", "Successfully Signed Up! Nice to meet you " + req.body.username);
             res.redirect("/protest");
         });
     });
 })
+
+
+
+
+
 
 router.get('/login', (req, res) => {
     if (req.user)
