@@ -18,13 +18,35 @@ It's a **collaboration app exclusive for bringing people together** to drive a p
 
 ## Installation
 
-```
-    git clone https://github.com/vij-duggirala/TakeAStand.org
-    cd TakeAStand.org/
-    npm install
-    node index.js
+
+
+Clone the repository:
+
 ```
 
+git clone https://github.com/vij-duggirala/TakeAStand.org
+
+```
+  
+
+cd into repository
+
+```
+
+cd TakeAStand.org/
+
+```
+  
+
+run npm install and then index.js
+
+```
+
+npm install
+
+node index.js
+
+```
 
 ## Technologies Used
 - HTML/CSS/Javascript
