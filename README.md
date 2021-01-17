@@ -4,6 +4,7 @@
 
 **Reach out to the Right people for the Right cause**
 
+![alt text](https://github.com/vij-duggirala/TakeAStand.org/blob/master/pics/landing/Screenshot%20from%202021-01-17%2013-36-09.png?raw=true)
 
 ## Why this platform?
 
