@@ -38,3 +38,12 @@ It's a **collaboration app exclusive for bringing people together** to drive a p
 4. Add features to report inappropriate posts
 5. Creative space for artists and individuals to showcase their skills for a noble cause
 
+## Screenshots
+![alt text](https://github.com/vij-duggirala/TakeAStand.org/blob/master/pics/login/Screenshot%20from%202021-01-17%2013-40-18.png)
+![alt text](https://github.com/vij-duggirala/TakeAStand.org/blob/master/pics/login/Screenshot%20from%202021-01-17%2013-46-56.png?raw=true)
+![alt text](https://github.com/vij-duggirala/TakeAStand.org/blob/master/pics/Screenshot%20from%202021-01-17%2013-45-54.png?raw=true)
+![alt text](https://github.com/vij-duggirala/TakeAStand.org/blob/master/pics/protest/1.png?raw=true)
+![alt text](https://github.com/vij-duggirala/TakeAStand.org/blob/master/pics/protest/2.png?raw=true)
+![alt text](https://github.com/vij-duggirala/TakeAStand.org/blob/master/pics/protest/3.png?raw=true)
+
+
