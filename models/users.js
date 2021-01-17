@@ -18,7 +18,10 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
     },
-    Registered: { type: [String] }
+    imageURL: {
+        type: String,
+        deafult: "https://bgp-palembang.com/assets/default-user.png"
+    }
 })
 UserSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('userData', UserSchema, 'userData');
