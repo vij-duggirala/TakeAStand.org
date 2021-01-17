@@ -31,39 +31,19 @@
 <script type="text/javascipt" src="/javascripts/forms.js"></script>
 
 <script>
-    var updatePostStats = {
-        Like: function (postId) {
 
-            document.getElementById('likes-count-' + postId).textContent++;
-
-        },
-        Dislike: function (postId) {
-            document.getElementById('dislikes-count-' + postId).textContent++;
-        }
-    };
-
-    var toggleButtonText = {
-        Like: function (button) {
-            button.textContent = "Liked";
-            button.disabled = true;
-        },
-        Dislike: function (button) {
-            button.textContent = "Disliked";
-            button.disabled = true;
-        }
-    };
 
     var actOnPost = function (event) {
         var postId = event.target.id;
         console.log(postId);
-        var action = event.target.textContent.trim();
+        var action = event.target.dataset.action;
         console.log(action);
         var x = document.querySelectorAll(".btn" + postId);
         x[0].disabled = true;
         x[1].disabled = true;
-        toggleButtonText[action](event.target);
-        updatePostStats[action](postId);
+
         axios.post('/protest/' + postId + '/act/' + action);
+        window.location.reload();
     };
 
 
@@ -74,6 +54,7 @@
         event.target.textContent = "Registered!";
         event.target.disabled = true;
         axios.post('/protest/' + postId + '/reg/');
+        window.location.reload();
     };
 
 

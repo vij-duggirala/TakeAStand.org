@@ -4,50 +4,53 @@
     <div class="container">
 
         <main>
-                <section>
-                  
+            <section>
+
                 <div class="card" style="border-radius: 8px; background-color: #cecee9;">
-                    
+
                     <div class="post_top">
-                        <img id="prof_pic" src="https://instagram.fdel21-1.fna.fbcdn.net/v/t51.2885-19/s150x150/122810134_412544013470643_2621482479962849799_n.jpg?_nc_ht=instagram.fdel21-1.fna.fbcdn.net&_nc_ohc=KDbXj29mrsMAX8lvRp7&tp=1&oh=d30903a5782fcc038214bc09bf0cc77b&oe=602E71D3"/>
-                        
+                        <img id="prof_pic" src="../uploads/<%=post.URL %>" />
+
                         <p id="card-title" style="margin-left: 6px; font-size: 18px;">
-                            
+
                             <%= post.author %>
-                            
+
                         </p>
 
                     </div>
-                
+
                     <img class="card-image" src="https://images.unsplash.com/photo-1547744037-b80bdba1b6f0" />
                     <div class="card-body" style="text-align: center;">
-                      
 
-                        
+
+
                         <p class="card-content" style="font-size: 24px;">
                             <%= post.name %>
                         </p>
 
                         <p class="card-content" style="font-size: 18px;">
-                            <h2 style="font-size: 18px; margin-bottom: 12px;"><%- post.sanitisedHTML %></h2>
+                        <h2 style="font-size: 18px; margin-bottom: 12px;">
+                            <%- post.sanitisedHTML %>
+                        </h2>
                         </p>
 
                         <p class="card-content" style="font-size: 18px;">
                             Date: <%= post.date.toDateString() %> &emsp; &emsp; Location: <%= post.location %>
                         </p>
-    
+
                         <p class="card-content" style="font-size: 18px;">
-                            
+
                         </p>
 
-                      <p class="card-content" style="font-size: 18px; margin-bottom: 36px;">
-                        
-                        <%=post.keywords%>
+                        <p class="card-content" style="font-size: 18px; margin-bottom: 36px;">
+
+                            <%=post.keywords%>
 
                         </p>
 
                         <div id="mapid" style="height: 220px; width: 220px; text-align: center; margin:auto;">00</div>
-                        <button id="map_view" style="margin-bottom: 20px;" onclick="act(event);" data-lat=<%=post.latitude %>
+                        <button id="map_view" style="margin-bottom: 20px;" onclick="act(event);"
+                            data-lat=<%=post.latitude %>
                             data-lon =
                             <%=post.longitude %>>Refocus
                         </button>
@@ -59,171 +62,179 @@
                                 <% if ( registered==true){ %>
                                     disabled
                                     <% } %>
-    
-                                                >
-                                                <% if ( registered==true){ %>
-                                                    Registered! 
-                                                <% } else {%>
+
+                                        >
+                                        <% if ( registered==true){ %>
+                                            Registered!
+                                            <% } else {%>
 
                                                 Register!
                                                 <% } %>
-                                    </button>
-                                    
-                                </div>
-                                <div class="registrati" id="reg-<%=post.id %>" style="text-align: center; margin:auto; font-size: 20px; margin-bottom: 14px;">
-                                    <%= post.numRegistered %> registration(s) so far
-                                </div>
+                            </button>
+
+                    </div>
+                    <div class="registrati" id="reg-<%=post.id %>"
+                        style="text-align: center; margin:auto; font-size: 20px; margin-bottom: 14px;">
+                        <%= post.numRegistered %> registration(s) so far
+                    </div>
 
 
-                        <div style="text-align: center; margin:auto; margin-bottom: 20px;">
+                    <div style="text-align: center; margin:auto; margin-bottom: 20px;">
 
-                            <button class="btn btn-dark btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %> 
-                                <% if ( interacted==true){ %>
-                                    disabled
-                                    <% } %>
+                        <button class="btn btn-dark btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %>
+                            data-action="Like"
+                            <% if ( interacted==true){ %>
+                                disabled
+                                <% } %>
 
                                     style="margin-top: 12px; margin-right: 40px; width: 180px;">
-                                
-                                    <% if ( interacted==true){ %>
-                                        Liked (<%= post.numLiked %>) </button>
-                                    <% } else { %>
-                                        Like (<%= post.numLiked %>) </button>
-                                    <% } %>
 
-                                <button class="btn btn-dark btn<%=post.id%>" onclick="actOnPost(event);" id=<%=post.id %> 
                                     <% if ( interacted==true){ %>
-                                        disabled
-                                        <% } %>
-    
-                                        style="margin-top: 12px; margin-right: 40px; width: 180px;">
-                                    
+                                        Liked (<%= post.numLiked %>)
+                        </button>
+                        <% } else { %>
+                            Like (<%= post.numLiked %>) </button>
+                                <% } %>
+
+                                    <button class="btn btn-dark btn<%=post.id%>" onclick="actOnPost(event);"
+                                        id=<%=post.id %> data-action="Dislike"
                                         <% if ( interacted==true){ %>
-
-                                            Disliked (<%= post.numDisliked %>)
-                                            <% } else { %>
-                                                Dislike (<%= post.numDisliked %>)
+                                            disabled
                                             <% } %>
-                                        
-                                        </button>
-                                
-                            
-                        
-                        </div>
 
-                        <div style="text-align: center;">
-                        </div>
+                                                style="margin-top: 12px; margin-right: 40px; width: 180px;">
+
+                                                <% if ( interacted==true){ %>
+
+                                                    Disliked (<%= post.numDisliked %>)
+                                                        <% } else { %>
+                                                            Dislike (<%= post.numDisliked %>)
+                                                                <% } %>
+
+                                    </button>
+
+
+
                     </div>
-                  </div>
 
-                  <h2 style="margin: auto; text-align: center;">
-                      DISCUSSION
-                  </h2>
+                    <div style="text-align: center;">
+                    </div>
+                </div>
+    </div>
 
-                <div class="card" style="background-color: #cecee9; width: 55%;"></div>
+    <h2 style="margin: auto; text-align: center;">
+        DISCUSSION
+    </h2>
 
-                    <% comments.forEach(function(comm){ %>
+    <div class="card" style="background-color: #cecee9; width: 55%;"></div>
 
-                        <div class="post_top" style="border-radius: 8px; width: 55%; align-items: center; margin: auto;margin-bottom: 10px; background-color: #cecee9; max-height: 300px;
+    <% comments.forEach(function(comm){ %>
+
+        <div class="post_top" style="border-radius: 8px; width: 55%; align-items: center; margin: auto;margin-bottom: 10px; background-color: #cecee9; max-height: 300px;
                         overflow-y: scroll; overflow: hidden;">
-                            <img id="prof_pic" src="https://instagram.fdel21-1.fna.fbcdn.net/v/t51.2885-19/s150x150/122810134_412544013470643_2621482479962849799_n.jpg?_nc_ht=instagram.fdel21-1.fna.fbcdn.net&_nc_ohc=KDbXj29mrsMAX8lvRp7&tp=1&oh=d30903a5782fcc038214bc09bf0cc77b&oe=602E71D3"/>
-                            
-                            <p id="card-title" style="margin-left: 6px; font-size: 18px;">
-                                
-                                <%= comm.author %>: &nbsp; <%= comm.comment %>
-                                
-                            </p>
-    
-                        </div>
+            <img id="prof_pic" src="../uploads/<%= dp %>" />
 
-                        <% }) %>
-                    
-                    
+            <p id="card-title" style="margin-left: 6px; font-size: 18px;">
 
+                <%= comm.author %>: &nbsp; <%= comm.comment %>
 
-                        
-
-                        <div style="text-align: center;">
-                        </div>
-                    </div>
-                  </div>
-
-                  <p style="height: 50px;"></p>
-
-
-
-                                <div style="text-align: center;">
-                                <form action="/protest/<%=post.id%>/comm" method="POST">
-
-                                    <div>
-                                    <input type="text" name="comment" placeholder="Add a comment..."
-                                    style="height: 35px; width: 55%; margin: auto; text-align: center; margin-bottom: 20px;"
-                                    >
-                                    </div>
-
-<div>
-                                    <input class="btn btn-dark btn<%=post.id%>" type="submit" value="COMMENT" style="width: 200px;">
-                                </div>
-                                </form>
-                            </div>
-
-
-
-
-
-
-                                <div style="height: 70px;"></div>
-
-
-                                <div class="text-center" style="text-align: center; margin: auto; margin-bottom: 50px;">
-
-                                    
-                    
-                                        <form action="/protest/<%=post.id%>/img" method="POST" class="text-center" 
-                                        enctype="multipart/form-data" style="text-align: center;">
-                                    
-                                    
-
-                                        <input type="file" name="image">
-                                        
-                                        <button class="btn btn-dark btn<%=post.id%>" type="submit" value="upload">Upload</button>
-                                    
-                                    </form>
-
-                            </div>
-
-
-                                <% post.Images.forEach( function(image){ %>
-                                    <img src="../uploads/<%=image %>" style="width: 300px; height: 300px; margin-left: 100px; margin-top: 50px;" alt="na">
-
-                                    <% }) %>
-
-                                        <script>
-                                            let map_btn = document.getElementById("map_view");
-                                            window.onload = function () {
-                                                map_btn.click();
-                                            }
-                                        </script>
-
-                                        <script>
-
-                                            var elem = document.getElementById("kw");
-                                            var str = elem.dataset.kw;
-                                            console.log(str)
-                                            //  str = str.split(' ,').join('') //str=str.split('#').join('') let
-                                            x = str.split(';'); var list = []; var t = 3; while (t--) {
-                                                for (var i = 0; i < x.length; i++)
-                                                    list.push([x[i], 10])
-                                            } console.log(list); WordCloud(document.getElementById('my_canvas'), {
-                                                list: list, shuffle: false, shape: 'cardoid', rotateRatio: 0.7, fontweight: "bold"
-                                            });
-                                        </script>
-
-        </section>
-        </main>
-
-        <div style="height: 100px;">
+            </p>
 
         </div>
 
-    </div>
-    <%- include('partials/footer') %>
+        <% }) %>
+
+
+
+
+
+
+            <div style="text-align: center;">
+            </div>
+            </div>
+            </div>
+
+            <p style="height: 50px;"></p>
+
+
+
+            <div style="text-align: center;">
+                <form action="/protest/<%=post.id%>/comm" method="POST">
+
+                    <div>
+                        <input type="text" name="comment" placeholder="Add a comment..."
+                            style="height: 35px; width: 55%; margin: auto; text-align: center; margin-bottom: 20px;">
+                    </div>
+
+                    <div>
+                        <input class="btn btn-dark btn<%=post.id%>" type="submit" value="COMMENT" style="width: 200px;">
+                    </div>
+                </form>
+            </div>
+
+            <br><br>
+
+            <h2 style="margin: auto; text-align: center;">
+                GALLERY
+            </h2>
+
+
+
+
+            <div style="height: 70px;"></div>
+
+
+            <div class="text-center" style="text-align: center; margin: auto; margin-bottom: 50px;">
+
+
+
+                <form action="/protest/<%=post.id%>/img" method="POST" class="text-center" enctype="multipart/form-data"
+                    style="text-align: center;">
+
+
+
+                    <input type="file" name="image">
+
+                    <button class="btn btn-dark btn<%=post.id%>" type="submit" value="upload">Upload</button>
+
+                </form>
+
+            </div>
+
+
+            <% post.Images.forEach( function(image){ %>
+                <img src="../uploads/<%=image %>"
+                    style="width: 300px; height: 300px; margin-left: 100px; margin-top: 50px;" alt="na">
+
+                <% }) %>
+
+                    <script>
+                        let map_btn = document.getElementById("map_view");
+                        window.onload = function () {
+                            map_btn.click();
+                        }
+                    </script>
+
+                    <script>
+
+                        var elem = document.getElementById("kw");
+                        var str = elem.dataset.kw;
+                        console.log(str)
+                        //  str = str.split(' ,').join('') //str=str.split('#').join('') let
+                        x = str.split(';'); var list = []; var t = 3; while (t--) {
+                            for (var i = 0; i < x.length; i++)
+                                list.push([x[i], 10])
+                        } console.log(list); WordCloud(document.getElementById('my_canvas'), {
+                            list: list, shuffle: false, shape: 'cardoid', rotateRatio: 0.7, fontweight: "bold"
+                        });
+                    </script>
+
+                    </section>
+                    </main>
+
+                    <div style="height: 100px;">
+
+                    </div>
+
+                    </div>
+                    <%- include('partials/footer') %>

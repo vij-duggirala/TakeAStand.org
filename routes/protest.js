@@ -53,8 +53,8 @@ router.post('/new', async (req, res) => {
         longitude: lon,
         location: req.body.location,
         description: req.body.description,
-        keywords: req.body.keywords
-
+        keywords: req.body.keywords,
+        URL: req.user.ImageURL,
     });
     await newPost.save();
     res.redirect('/protest');
@@ -84,6 +84,7 @@ router.post('/:id/act/:action', isLoggedIn, (req, res, next) => {
         like: like
     });
     newIke.save();
+
 
 });
 
@@ -159,7 +160,7 @@ router.get('/:id', isLoggedIn, async (req, res) => {
     if (registeredtf.length)
         registered = true;
 
-    res.render('display', { post: posts, comments: comments, interacted: interacted, registered: registered });
+    res.render('display', { post: posts, comments: comments, interacted: interacted, registered: registered, dp: req.user.imageURL });
 
 });
 
