@@ -16,6 +16,15 @@ Planning to organize a blood donation camp in your locality ? Or maybe a tree pl
 With this platform, you can **organize any community oriented activity within minutes**, just like that. 
 It's a **collaboration app exclusive for bringing people together** to drive a positive change in society.
 
+## Installation
+
+```
+    git clone https://github.com/vij-duggirala/TakeAStand.org
+    cd TakeAStand.org/
+    npm install
+    node index.js
+```
+
 
 ## Technologies Used
 - HTML/CSS/Javascript
